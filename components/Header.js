@@ -26,13 +26,8 @@ const Header = ({ children }) => {
         }}
       >
         <Menu.Item key="home">
-          <Link href="/profile">
+          <Link href="/">
             <a>LoLToGG</a>
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="leaderboards">
-          <Link href="/leaderboards">
-            <a>천상계 순위표</a>
           </Link>
         </Menu.Item>
         <Menu.Item key="search">
@@ -45,6 +40,7 @@ const Header = ({ children }) => {
           />
         </Menu.Item>
       </Menu>
+
       {children}
     </div>
   );
