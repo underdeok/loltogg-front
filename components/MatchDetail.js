@@ -15,7 +15,7 @@ const MatchDetail = (props) => {
   units = props.unit;
   return (
     <>
-      <div>{rank}등</div>
+      <div style={{ fontSize: '20px', color: 'white' }}>{rank}등</div>
       <Avatar.Group>
         {units.map((item, index) => {
           let lowerItem = item.toLowerCase();
@@ -25,7 +25,7 @@ const MatchDetail = (props) => {
               size="large"
               shape="square"
               gap="4"
-              style={{ marginLeft: '5px' }}
+              style={{ marginLeft: '5px', marginBottom: '20px' }}
               key={index}
             />
           );

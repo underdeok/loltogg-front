@@ -18,6 +18,7 @@ const profile = () => {
 
   const iconUrl = `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/profile-icons/${userData.profileIconId}.jpg`;
   const getMatchList = (puuid) => {
+    setIsMatchLoading(false);
     axios
       .get(`http://localhost:5000/match/getMatch/${puuid}`)
       .then((res) => {
@@ -73,8 +74,11 @@ const profile = () => {
 
   return (
     <Header>
-      <div style={{ marginLeft: 100 }}>
-        <Card style={{ width: 300, marginTop: 16 }} loading={!isUserLoading}>
+      <div style={{ width: '50%', margin: 'auto' }}>
+        <Card
+          style={{ width: 300, marginTop: '16px', marginBottom: '16px' }}
+          loading={!isUserLoading}
+        >
           <Meta
             avatar={<Avatar src={iconUrl} />}
             title={userData.name}
@@ -83,7 +87,7 @@ const profile = () => {
         </Card>
         {!isMatchLoading ? (
           <>
-            <h5>Loading...</h5>
+            <h5 style={{ color: 'white' }}>Loading...</h5>
           </>
         ) : (
           <>

@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Menu, Input } from 'antd';
+import 'antd/dist/antd.css';
 
 const Header = ({ children }) => {
   const [searchInput, onChangeSearchInput] = useState('');
@@ -16,7 +17,7 @@ const Header = ({ children }) => {
   };
 
   return (
-    <div>
+    <div style={{ width: '100%', height: '150vh', backgroundColor: '#292929' }}>
       <Menu
         mode="horizontal"
         theme="dark"
@@ -33,6 +34,7 @@ const Header = ({ children }) => {
         <Menu.Item key="search">
           <Input.Search
             enterButton
+            placeholder="소환사 검색"
             value={searchInput}
             onChange={onChange}
             onSearch={onSearch}
