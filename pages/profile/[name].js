@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import Header from '../../components/Header.js';
 import { Avatar, Card } from 'antd';
 import MatchDetail from '../../components/MatchDetail.js';
-import { SERVER_URL } from '../common/Url';
+import { SERVER_URL } from '../../common/Url';
 
 const { Meta } = Card;
 
