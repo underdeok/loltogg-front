@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import Header from '../../components/Header.js';
 import { Avatar, Card } from 'antd';
 import MatchDetail from '../../components/MatchDetail.js';
+import SERVER_URL from '../common/Url';
 
 const { Meta } = Card;
 
@@ -20,8 +21,12 @@ const profile = () => {
   const getMatchList = (puuid) => {
     setIsMatchLoading(false);
     axios
-      .get(`http://localhost:5000/match/getMatch/${puuid}`)
+      .get(`${SERVER_URL}/match/getMatch/${puuid}`)
       .then((res) => {
+        if (res.status === 403) {
+          router.back();
+          console.log('권한에러');
+        }
         setData(res.data, puuid);
         setIsMatchLoading(true);
       })
@@ -59,8 +64,12 @@ const profile = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/user/getUser/${name}`)
+      .get(`${SERVER_URL}/user/getUser/${name}`)
       .then((res) => {
+        if (res.status === 403) {
+          router.back();
+          console.log('권한에러');
+        }
         setUserData(res.data);
         setIsUserLoading(true);
         getMatchList(res.data.puuid);

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../components/Header.js';
-import 'antd/dist/antd.css';
 import { Space, Table, Button, Input, Form } from 'antd';
+import { SERVER_URL } from '../common/Url';
+import 'antd/dist/antd.css';
 
 import axios from 'axios';
 
@@ -13,13 +14,14 @@ const Home = () => {
   const [form] = Form.useForm();
 
   const getComment = () => {
-    axios.get('http://localhost:5000/board').then((res) => {
+    axios.get(`${SERVER_URL}/board`).then((res) => {
       setBoardData(res.data);
       setIsLoading(true);
     });
   };
 
   useEffect(() => {
+    console.log(`${SERVER_URL}/board`);
     getComment();
   }, []);
 
@@ -27,7 +29,7 @@ const Home = () => {
     form.resetFields();
     setIsLoading(false);
     axios
-      .post('http://localhost:5000/board', {
+      .post(`${SERVER_URL}/board`, {
         content: input.comment,
       })
       .then((res) => {
@@ -36,7 +38,7 @@ const Home = () => {
   };
 
   const deleteComment = (id) => {
-    axios.delete(`http://localhost:5000/board/${id}`).then((res) => {
+    axios.delete(`${SERVER_URL}/board/${id}`).then((res) => {
       let resultData = boardData.filter((item) => item.id !== id);
       setBoardData(resultData);
     });
